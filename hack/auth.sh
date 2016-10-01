@@ -15,9 +15,9 @@ fi
 if curl "https://api.github.com/users/$1/keys" -s \
 | awk -F '"' '$2 == "key" {print $4}' \
 | grep -q "$2"; then
+	echo "SETUP=true"
 	echo "$2" >> "$1"
 	exit 0
 fi
 
-echo "github.com/$1 not found"
-exit 1
+exit 0
